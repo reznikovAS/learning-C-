@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{82F4A487-8A0E-499E-976F-BC1CB0BACAB6}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		README.txt = README.txt
 	EndProjectSection
 EndProject
 Global

@@ -10,8 +10,11 @@
 #include <ctime>
 #include <iomanip>
 
-using namespace std;
 
+using namespace std;
+// ANSI escape codes для изменения цвета текста
+const string GREEN_TEXT = "\033[32m";
+const string RESET_COLOR = "\033[0m";
 // КР1
 void task1_CR1() {
     double speed, distance;
@@ -23,8 +26,10 @@ void task1_CR1() {
     double timeInSeconds = distance / speed;
     double timeInHours = timeInSeconds / 3600;
 
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Время в секундах: " << timeInSeconds << endl;
     cout << "Время в часах: " << timeInHours << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 void task2_CR1() {
     double h, x, a;
@@ -37,8 +42,9 @@ void task2_CR1() {
 
     double halfBase = sqrt(a*a - h*h);
     double base = 2 * halfBase + x;
-
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Основание треугольника: " << base << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 void task3_CR1() {
     double x, y, leftTopX, leftTopY, rightBottomX, rightBottomY;
@@ -50,7 +56,9 @@ void task3_CR1() {
     cin >> rightBottomX >> rightBottomY;
 
     bool inside = (x > leftTopX && x < rightBottomX && y > rightBottomY && y < leftTopY);
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << boolalpha << inside << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 // КР2
 void task1_CR2() {
@@ -62,10 +70,14 @@ void task1_CR2() {
     const int dragonBaseYear = 2000; // Год дракона
     int yearsUntilDragon = (dragonBaseYear - birthYear) % dragonYearCycle;
     if (yearsUntilDragon == 0) {
+        cout << GREEN_TEXT; // Установка зелёного цвета текста
         cout << "БУДЬТЕ СЧАСТЛИВЫ ВЕСЬ ГОД!" << endl;
+        cout << RESET_COLOR; // Возврат к стандартному цвету текста
     }
     else {
+        cout << GREEN_TEXT; // Установка зелёного цвета текста
         cout << "До следующего года дракона " << (dragonYearCycle - yearsUntilDragon) << " лет." << endl;
+        cout << RESET_COLOR; // Возврат к стандартному цвету текста
     }
 }
 void task2_CR2() {
@@ -79,9 +91,10 @@ void task2_CR2() {
 
     double totalTime = totalDistance / (speedBiker + speedHiker); // общее время до встречи
     double distanceBiker = speedBiker * totalTime; // расстояние, пройденное велосипедистом
-
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Путники встретятся через " << totalTime << " часов." << endl;
     cout << "Место встречи находится на расстоянии " << distanceBiker << " км от пункта А." << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 void task3_CR2() {
     double x, y;
@@ -93,10 +106,14 @@ void task3_CR2() {
 
     // Проверка попадания в область: x^2 + y^2 <= 1 (внутри или на окружности) и y <= x (ниже или на прямой y=x)
     if (x * x + y * y <= 1 && y <= x && x >= 0 && y >= 0) {
+        cout << GREEN_TEXT; // Установка зелёного цвета текста
         cout << "Точка (" << x << ", " << y << ") попадает в заданную область." << endl;
+        cout << RESET_COLOR; // Возврат к стандартному цвету текста
     }
     else {
+        cout << GREEN_TEXT; // Установка зелёного цвета текста
         cout << "Точка (" << x << ", " << y << ") не попадает в заданную область." << endl;
+        cout << RESET_COLOR; // Возврат к стандартному цвету текста
     }
 }
 // КР3
@@ -131,7 +148,9 @@ void task1_CR3() {
                 continue;
             }
         }
+        cout << GREEN_TEXT; // Установка зелёного цвета текста
         cout << "При x = " << x << "Ответ: функция F равна" << F << endl;
+        cout << RESET_COLOR; // Возврат к стандартному цвету текста
     }
 }
 void task2_CR3() {
@@ -144,8 +163,9 @@ void task2_CR3() {
     for (int a = 1; a <= n; a++) {
         sum_sqrt += sqrt(3 * a);
     }
-
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Ответ: " << sum_sqrt << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
   
 }
 void task3_CR3() {
@@ -161,9 +181,9 @@ void task3_CR3() {
         maxPowerOfTwo++;
         tempNumber /= 2;
     }
-
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Наибольшая степень двойки, на которую делится число " << number << ", это 2^" << maxPowerOfTwo << endl;
-
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 
 
 }
@@ -182,7 +202,9 @@ void task4_CR3() {
         if (square.size() >= number.size()) {
             // Сравниваем последние цифры квадрата с A
             if (square.substr(square.size() - number.size()) == number) {
+                cout << GREEN_TEXT; // Установка зелёного цвета текста
                 cout << A << " - " << A * A << endl;
+                cout << RESET_COLOR; // Возврат к стандартному цвету текста
             }
         }
     }
@@ -234,9 +256,10 @@ void task2_CR4(const vector<double>& X) {
             sumAfterMin = 0;
         }
     }
-
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Количество элементов массива, равных 0: " << zeroCount << endl;
     cout << "Сумма элементов массива, расположенных после минимального элемента: " << sumAfterMin << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 
 // Задача 3 КР4
@@ -244,12 +267,13 @@ void task3_CR4(vector<double>& X) {
     sort(X.begin(), X.end(), [](double a, double b) {
         return abs(a) < abs(b);
         });
-
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Элементы массива, упорядоченные по возрастанию модулей элементов: ";
     for (double element : X) {
         cout << element << " ";
     }
     cout << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 
 // Задача 4 КР4
@@ -263,7 +287,9 @@ void task4_CR4(const vector<double>& X, const vector<double>& Y) {
     cout << "Таблица значений функции, упорядоченная по возрастанию аргумента:" << endl;
     for (const auto& pair : functionValues) {
         double avg = accumulate(pair.second.begin(), pair.second.end(), 0.0) / pair.second.size();
+        cout << GREEN_TEXT; // Установка зелёного цвета текста
         cout << "Аргумент: " << pair.first << ", Среднее значение функции: " << avg << endl;
+        cout << RESET_COLOR; // Возврат к стандартному цвету текста
     }
 }
 // Задача 1 КР4
@@ -272,7 +298,9 @@ void task1_CR4() {
     fillArray(X); // Заполнение массива X
 
     // Вывод исходного массива X
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Исходный массив X: ";
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
     for (double x : X) {
         cout << x << " ";
     }
@@ -284,7 +312,9 @@ void task1_CR4() {
     }
 
     // Вывод массива Y
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Массив Y (результаты функции): ";
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
     for (double y : Y) {
         cout << y << " ";
     }
@@ -342,8 +372,9 @@ void task1_CR5(const vector<vector<int>>& array) {
             lastPositiveRow = i + 1;
         }
     }
-
+    cout << GREEN_TEXT; // Установка зелёного цвета текста
     cout << "Номер последней полностью положительной строки: " << lastPositiveRow << endl;
+    cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 
 

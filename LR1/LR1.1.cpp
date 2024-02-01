@@ -62,23 +62,24 @@ void task3_CR1() {
 }
 // КР2
 void task1_CR2() {
-    int birthYear;
-    cout << "Введите ваш год рождения: ";
-    cin >> birthYear;
-
-    const int dragonYearCycle = 12;
-    const int dragonBaseYear = 2000; // Год дракона
-    int yearsUntilDragon = (dragonBaseYear - birthYear) % dragonYearCycle;
-    if (yearsUntilDragon == 0) {
-        cout << GREEN_TEXT; // Установка зелёного цвета текста
-        cout << "БУДЬТЕ СЧАСТЛИВЫ ВЕСЬ ГОД!" << endl;
-        cout << RESET_COLOR; // Возврат к стандартному цвету текста
-    }
+    int god;
+    cout << "Введите ваш год рождения: " << endl;
+    cin >> god;
+    int temp = abs((god - 2000)) % 12;
+     cout << GREEN_TEXT;
+    if (temp == 0) cout << "БУДЬТЕ СЧАСТЛИВЫ ВЕСЬ ГОД!" << endl;
     else {
-        cout << GREEN_TEXT; // Установка зелёного цвета текста
-        cout << "До следующего года дракона " << (dragonYearCycle - yearsUntilDragon) << " лет." << endl;
-        cout << RESET_COLOR; // Возврат к стандартному цвету текста
+
+        cout << "До следующего года дракона: "<< endl;
+        if (god > 2000)
+        {
+            cout << 12 - temp << endl;
+        }
+        else {
+            cout << temp << endl;
+        }
     }
+    cout << RESET_COLOR;
 }
 void task2_CR2() {
     double totalDistance, speedBiker, speedHiker;

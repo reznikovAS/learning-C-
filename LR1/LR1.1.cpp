@@ -395,25 +395,6 @@ void task3_CR5(vector<vector<int>>& array, int M, int N, int k) {
     printArray(array);
 }
 
-void task4_CR5(vector<vector<int>>& array) {
-    int M = array.size();
-    int N = array[0].size();
-    vector<vector<int>> newArray(M, vector<int>(N, INT_MIN));
-
-    for (int i = 0; i < M; ++i) {
-        for (int j = 0; j < N; ++j) {
-            // Ищем максимальный элемент в подматрице от (0,0) до (i,j)
-            for (int sub_i = 0; sub_i <= i; ++sub_i) {
-                for (int sub_j = 0; sub_j <= j; ++sub_j) {
-                    newArray[i][j] = max(newArray[i][j], array[sub_i][sub_j]);
-                }
-            }
-        }
-    }
-
-    cout << GREEN_TEXT << "Матрица после замены каждого элемента на максимальный среди элементов подматрицы:" << RESET_COLOR << endl;
-    printArray(newArray);
-}
 // КР6
 
 // Глобальная переменная для размера массива

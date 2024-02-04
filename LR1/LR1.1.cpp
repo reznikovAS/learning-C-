@@ -57,7 +57,7 @@ void task3_CR1() {
 
     bool inside = (x > leftTopX && x < rightBottomX && y > rightBottomY && y < leftTopY);
     cout << GREEN_TEXT; // Установка зелёного цвета текста
-    cout << boolalpha << inside << endl;
+    cout << boolalpha << inside << endl; //выводим true либо false
     cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
 // КР2
@@ -74,9 +74,6 @@ void task1_CR2() {
         if (god > 2000)
         {
             cout << 12 - temp << endl;
-        }
-        else {
-            cout << temp << endl;
         }
     }
     cout << RESET_COLOR;
@@ -377,8 +374,47 @@ void task1_CR5(const vector<vector<int>>& array) {
     cout << "Номер последней полностью положительной строки: " << lastPositiveRow << endl;
     cout << RESET_COLOR; // Возврат к стандартному цвету текста
 }
+void task2_CR5(vector<vector<int>>& array) {
+    int M = array.size(); // Так как матрица квадратная, количество строк равно количеству столбцов.
 
+    // Проходим по всей матрице и меняем местами элементы симметрично относительно вертикальной оси.
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < M / 2; ++j) {
+            swap(array[i][j], array[i][M - j - 1]);
+        }
+    }
 
+    cout << GREEN_TEXT << "Матрица после зеркального отражения:" << RESET_COLOR << endl;
+    printArray(array);
+}
+
+void task3_CR5(vector<vector<int>>& array, int M, int N, int k) {
+    array.insert(array.begin() + k, vector<int>(N, 0));
+
+    cout << GREEN_TEXT << "Матрица после вставки строки из нулей после строки " << k << ":" << RESET_COLOR << endl;
+    printArray(array);
+}
+
+void task4_CR5(vector<vector<int>>& array) {
+    int M = array.size();
+    int N = array[0].size();
+    vector<vector<int>> newArray(M, vector<int>(N, INT_MIN));
+
+    for (int i = 0; i < M; ++i) {
+        for (int j = 0; j < N; ++j) {
+            // Ищем максимальный элемент в подматрице от (0,0) до (i,j)
+            for (int sub_i = 0; sub_i <= i; ++sub_i) {
+                for (int sub_j = 0; sub_j <= j; ++sub_j) {
+                    newArray[i][j] = max(newArray[i][j], array[sub_i][sub_j]);
+                }
+            }
+        }
+    }
+
+    cout << GREEN_TEXT << "Матрица после замены каждого элемента на максимальный среди элементов подматрицы:" << RESET_COLOR << endl;
+    printArray(newArray);
+}
+// КР6
 
 // Глобальная переменная для размера массива
 int Size = 3; 
@@ -506,9 +542,12 @@ void showMenu() {
     cout << "10. Задача 4 контрольной работы 3 Дано натуральное число n. Среди чисел A меньших его найти все такие, квадрат которых оканчивается на это число A" << endl;
     cout << "Контрольная работа 4:" << endl;
     cout << "11. контрольня работа 4 (Сразу 4 задания с одного массива) " << endl;
-    cout << "Контрольная работа 5:" << endl;
-    cout << "12. контрольня работа 5 Работа с матрицами  " << endl;
-    cout << "13. контрольня работа 6 Работа с таблицей  " << endl;
+    cout << "Контрольная работа 5 Работа с матрицами:" << endl;
+    cout << "12. Задача 1 контрольной работы 5 Номер последней строки, содержащей только положительные элементы матрицы" << endl;
+    cout << "13. Задача 2 контрольной работы 5 Отразить элементы относительно вертикальной оси симметрии матрицы " << endl;
+    cout << "14. Задача 3 контрольной работы 5 После строки матрицы с номером k вставить строку из нулей " << endl;
+    cout << "Контрольная работа 6:" << endl;
+    cout << "16. контрольня работа 6 Работа с таблицей  " << endl;
     cout << "0. Выход" << endl;
 }
 
@@ -565,11 +604,31 @@ int main() {
             task1_CR5(array);
             break;
         }
-        case 13:
+        case 13: {
+            int M, N;
+            cout << "Введите размеры массива M и N: ";
+            cin >> M >> N;
+            vector<vector<int>> array(M, vector<int>(N));
+            fillArray(array, M, N); 
+            task2_CR5(array);
+            break;
+        }
+        case 14: {
+            int M, N, k;
+            cout << "Введите размеры массива M и N: ";
+            cin >> M >> N;
+            cout << "Введите номер строки k для вставки строки из нулей: ";
+            cin >> k;
+            vector<vector<int>> array(M, vector<int>(N));
+            fillArray(array, M, N); 
+            task3_CR5(array, M, N, k);
+            break;
+        }
+        case 16:
             task1_CR6();
             break;
         case 0:
-            return 0; // Выход из программы
+            return 0; 
         default:
             cout << "Неверный выбор, попробуйте еще раз." << endl;
         }
